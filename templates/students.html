@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+Students
+</title>
+
+<link
+rel="stylesheet"
+href="{{ url_for(
+'static',
+filename='style.css'
+) }}">
+
+</head>
+
+<body>
+
+<h2>
+
+Student List
+
+</h2>
+
+
+<form
+action="/search"
+method="GET">
+
+<input
+type="text"
+name="q"
+placeholder="Search student">
+
+<button>
+
+Search
+
+</button>
+
+</form>
+
+<br>
+
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Photo</th>
+
+<th>Name</th>
+
+<th>Age</th>
+
+<th>Department</th>
+
+<th>Email</th>
+
+<th>Edit</th>
+
+<th>Delete</th>
+
+</tr>
+
+
+{% for s in students %}
+
+<tr>
+
+<td>
+
+{{ s.id }}
+
+</td>
+
+
+<td>
+
+{% if s.photo %}
+
+<img
+
+src="{{ url_for(
+'static',
+filename='uploads/' + s.photo
+) }}"
+
+width="80"
+
+height="80">
+
+{% else %}
+
+No Photo
+
+{% endif %}
+
+</td>
+
+
+<td>
+
+{{ s.name }}
+
+</td>
+
+
+<td>
+
+{{ s.age }}
+
+</td>
+
+
+<td>
+
+{{ s.department }}
+
+</td>
+
+
+<td>
+
+{{ s.email }}
+
+</td>
+
+
+<td>
+
+<a
+href="/edit/{{s.id}}">
+
+Edit
+
+</a>
+
+</td>
+
+
+<td>
+
+<a
+
+href="/delete/{{s.id}}"
+
+onclick="return confirm(
+'Are you sure you want to delete this student?'
+)">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+<br>
+
+<a href="/">
+
+Back to Registration
+
+</a>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link
+rel="stylesheet"
+href="{{url_for(
+'static',
+filename='style.css'
+)}}">
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>
+Student Registration
+</h2>
+
+{% with msg=get_flashed_messages() %}
+
+{% for m in msg %}
+
+<p class="success">
+
+{{m}}
+
+</p>
+
+{% endfor %}
+
+{% endwith %}
+
+<form
+method="POST"
+enctype="multipart/form-data">
+
+<input
+name="name"
+placeholder="Name"
+required>
+
+<input
+name="age"
+type="number"
+placeholder="Age"
+required>
+
+<input
+name="department"
+placeholder="Department"
+required>
+
+<input
+name="email"
+type="email"
+placeholder="Email"
+required>
+
+<input
+type="file"
+name="photo">
+
+<button>
+
+Register
+
+</button>
+
+</form>
+
+<a href="/students">
+
+View Students
+
+</a>
+
+</div>
+
+</body>
+
+</html>

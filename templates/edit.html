@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+Edit Student
+
+</title>
+
+<link
+rel="stylesheet"
+href="{{ url_for(
+'static',
+filename='style.css'
+) }}">
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>
+
+Edit Student
+
+</h2>
+
+<form
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="text"
+name="name"
+value="{{ student.name }}"
+required>
+
+<br><br>
+
+
+<input
+type="number"
+name="age"
+value="{{ student.age }}"
+required>
+
+<br><br>
+
+
+<input
+type="text"
+name="department"
+value="{{ student.department }}"
+required>
+
+<br><br>
+
+
+<input
+type="email"
+name="email"
+value="{{ student.email }}"
+required>
+
+<br><br>
+
+
+<p>
+
+Current Photo
+
+</p>
+
+{% if student.photo %}
+
+<img
+
+src="{{ url_for(
+'static',
+filename='uploads/' + student.photo
+) }}"
+
+width="120"
+
+height="120">
+
+{% else %}
+
+<p>
+
+No Photo Uploaded
+
+</p>
+
+{% endif %}
+
+<br><br>
+
+
+<label>
+
+Choose New Photo
+
+</label>
+
+<br>
+
+<input
+type="file"
+name="photo">
+
+<br><br>
+
+
+<button
+type="submit">
+
+Update
+
+</button>
+
+</form>
+
+<br>
+
+<a href="/students">
+
+Back
+
+</a>
+
+</div>
+
+</body>
+
+</html>
